@@ -1,0 +1,7 @@
+server:
+  host: localhost:8000
+
+rateLimiter:
+  strategy: token-bucket
+  tokenBucket:
+    reqPerMin: 4
