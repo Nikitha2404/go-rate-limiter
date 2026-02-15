@@ -2,11 +2,15 @@ package ratelimiter
 
 import (
 	"go-rate-limiter/config"
+	"go-rate-limiter/ratelimiter/fixedwindow"
+	"go-rate-limiter/ratelimiter/leakybucket"
 	"go-rate-limiter/ratelimiter/tokenbucket"
 )
 
 var (
 	tokenBucketStrategy = "token-bucket"
+	leakyBucketStrategy = "leaky-bucket"
+	fixedWindowStrategy = "fixed-window"
 )
 
 type RateLimiterAlgo interface {
@@ -23,6 +27,10 @@ func InitRateLimiter() *RateLimiter {
 	switch strategy {
 	case tokenBucketStrategy:
 		r.rateLimiter = tokenbucket.NewTokenBucket()
+	case leakyBucketStrategy:
+		r.rateLimiter = leakybucket.NewLeakyBucket()
+	case fixedWindowStrategy:
+		r.rateLimiter = fixedwindow.NewFixedWindow()
 	}
 	return r
 }

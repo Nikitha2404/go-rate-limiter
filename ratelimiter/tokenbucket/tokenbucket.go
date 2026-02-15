@@ -17,7 +17,7 @@ type TokenBucket struct {
 }
 
 func NewTokenBucket() *TokenBucket {
-	reqPerMin := config.AppConfig.RateLimiter.TokenBucket.ReqPerMin
+	reqPerMin := config.AppConfig.RateLimiter.ReqPerMin
 	return &TokenBucket{
 		totalTokens:    float64(reqPerMin),
 		bucketSize:     float64(reqPerMin),

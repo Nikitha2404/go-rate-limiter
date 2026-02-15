@@ -16,12 +16,8 @@ type Server struct {
 }
 
 type RateLimiter struct {
-	Strategy    string      `mapstructure:"strategy"`
-	TokenBucket TokenBucket `mapstructure:"tokenBucket"`
-}
-
-type TokenBucket struct {
-	ReqPerMin int `mapstructure:"reqPerMin"`
+	Strategy  string `mapstructure:"strategy"`
+	ReqPerMin int    `mapstructure:"reqPerMin"`
 }
 
 var AppConfig AppConfigurations
